@@ -1,0 +1,15 @@
+if(TagVal('TURBINE_SPEED','*'))<3550 then (if(TagVal('TURBINE_SPEED','*-10s'))>10 then (*A*) else 0) else 0
+
+*A*: if(TagVal('TURBINE_SPEED','*-120s')-TagVal('TURBINE_SPEED','*'))>2 then (*B*) else if(TagVal('TURBINE_SPEED','*-120s')-TagVal('TURBINE_SPEED','*'))<2 then (*C*) else 0
+
+*B*: if(TagVal('BEARING_TEMPERATURE','*-10s'))<(TagMax('BEARING_TEMPERATURE','*-10s','*')-0.25) then 1 else 0
+
+*C*: if(TagVal('BEARING_TEMPERATURE','*'))<(TagMax('BEARING_TEMPERATURE','*-10s','*')-0.25) then 1 else 0
+
+
+
+
+if(TagVal('TURBINE_SPEED','*'))<3550 then (if(TagVal('TURBINE_SPEED','*-10s'))>10 then (if(TagVal('TURBINE_SPEED','*-120s')-TagVal('TURBINE_SPEED','*'))>2 then (if(TagVal('BEARING_TEMPERATURE','*-10s'))<(TagMax('BEARING_TEMPERATURE','*-10s','*')-0.25) then 1 else 0) else if(TagVal('TURBINE_SPEED','*-120s')-TagVal('TURBINE_SPEED','*'))<2 then (if(TagVal('BEARING_TEMPERATURE','*'))<(TagMax('BEARING_TEMPERATURE','*-10s','*')-0.25) then 1 else 0) else 0) else 0) else 0
+
+
+
